@@ -23,14 +23,37 @@
         z-index: 10;
       }
       h1 {
-        font-size: 60px;
+        font-size: clamp(
+          24px,
+          5vw,
+          60px
+        ); /* Tự động điều chỉnh theo màn hình */
         color: #fff;
         text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+        white-space: normal; /* Cho phép xuống dòng trên điện thoại */
+        overflow: hidden;
+        width: auto;
         white-space: nowrap;
         overflow: hidden;
         border-right: 5px solid white;
         width: 0;
         animation: typing 6s steps(40) forwards, glow 1.5s infinite alternate 6s;
+      }
+      .date {
+        font-size: clamp(16px, 3vw, 24px);
+      }
+
+      /* Điều chỉnh bóng bay và pháo hoa cho màn hình nhỏ */
+      @media screen and (max-width: 768px) {
+        .balloon {
+          width: 30px;
+          height: 45px;
+        }
+
+        .firework {
+          width: 3px;
+          height: 3px;
+        }
       }
       @keyframes typing {
         from {
