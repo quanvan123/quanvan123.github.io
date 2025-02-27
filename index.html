@@ -48,6 +48,24 @@
           text-shadow: 0 0 30px #ff4757, 0 0 40px gold, 0 0 50px #ff6b81;
         }
       }
+      .date {
+        font-size: 20px;
+        color: #fff;
+        margin-top: 20px;
+        opacity: 0;
+        transform: scale(0.5);
+        animation: appear 3s ease-in-out forwards 6s;
+      }
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1.5);
+        }
+      }
       .balloons {
         position: absolute;
         width: 100%;
@@ -101,6 +119,7 @@
         Chúc em tuổi mới luôn xinh đẹp, hạnh phúc <br />
         và đạt được những điều mình mong muốn nhé ❤️ 💖🌹!
       </h1>
+      <p class="date">Happy birthday Hoàng Thư - 27/02/2025</p>
       <div class="balloons"></div>
       <div class="fireworks"></div>
     </div>
