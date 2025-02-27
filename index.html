@@ -1,178 +1,129 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chúc Mừng Sinh Nhật</title>
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-        font-family: "Arial", sans-serif;
-        position: relative;
-        overflow: hidden;
-      }
-      .container {
-        text-align: center;
-        position: relative;
-        z-index: 10;
-      }
-      h1 {
-        font-size: clamp(
-          24px,
-          5vw,
-          60px
-        ); /* Tự động điều chỉnh theo màn hình */
-        color: #fff;
-        text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
-        white-space: normal; /* Cho phép xuống dòng trên điện thoại */
-        overflow: hidden;
-        width: auto;
-        white-space: nowrap;
-        overflow: hidden;
-        border-right: 5px solid white;
-        width: 0;
-        animation: typing 6s steps(40) forwards, glow 1.5s infinite alternate 6s;
-      }
-      .date {
-        font-size: clamp(16px, 3vw, 24px);
-      }
-
-      /* Điều chỉnh bóng bay và pháo hoa cho màn hình nhỏ */
-      @media screen and (max-width: 768px) {
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 90%;
+            padding: 20px;
+            z-index: 10;
+        }
+        h1 {
+            font-size: clamp(18px, 5vw, 40px);
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.9);
+            white-space: normal;
+            border-right: 5px solid white;
+            display: inline-block;
+            overflow: hidden;
+            width: 0;
+            animation: typing 4s steps(40) forwards, glow 1.5s infinite alternate 4s;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 15px #ff6b81, 0 0 20px #ff4757; }
+            to { text-shadow: 0 0 20px #ff4757, 0 0 25px gold; }
+        }
+        .date {
+            font-size: clamp(14px, 3vw, 22px);
+            color: #fff;
+            margin-top: 20px;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: appear 3s ease-in-out forwards 4s;
+        }
+        @keyframes appear {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .balloons, .fireworks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
         .balloon {
-          width: 30px;
-          height: 45px;
+            position: absolute;
+            width: 30px;
+            height: 45px;
+            background: red;
+            border-radius: 50%;
+            animation: rise 6s infinite ease-in-out;
         }
-
+        @keyframes rise {
+            from { transform: translateY(100vh); opacity: 1; }
+            to { transform: translateY(-10vh); opacity: 0; }
+        }
         .firework {
-          width: 3px;
-          height: 3px;
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: yellow;
+            border-radius: 50%;
+            animation: explode 1.5s ease-out infinite;
         }
-      }
-      @keyframes typing {
-        from {
-          width: 0;
+        @keyframes explode {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(4); opacity: 0; }
         }
-        to {
-          width: 100%;
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .balloon { width: 20px; height: 35px; }
+            .firework { width: 3px; height: 3px; }
         }
-      }
-      @keyframes glow {
-        from {
-          text-shadow: 0 0 20px #ff6b81, 0 0 30px #ff4757, 0 0 40px gold;
-        }
-        to {
-          text-shadow: 0 0 30px #ff4757, 0 0 40px gold, 0 0 50px #ff6b81;
-        }
-      }
-      .date {
-        font-size: 20px;
-        color: #fff;
-        margin-top: 20px;
-        opacity: 0;
-        transform: scale(0.5);
-        animation: appear 3s ease-in-out forwards 6s;
-      }
-      @keyframes appear {
-        from {
-          opacity: 0;
-          transform: scale(0.5);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1.5);
-        }
-      }
-      .balloons {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-      }
-      .balloon {
-        position: absolute;
-        width: 50px;
-        height: 70px;
-        background: red;
-        border-radius: 50%;
-        animation: rise 6s infinite ease-in-out;
-      }
-      @keyframes rise {
-        from {
-          transform: translateY(100vh);
-          opacity: 1;
-        }
-        to {
-          transform: translateY(-10vh);
-          opacity: 0;
-        }
-      }
-      .firework {
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        background: yellow;
-        border-radius: 50%;
-        animation: explode 1.5s ease-out infinite;
-      }
-      @keyframes explode {
-        from {
-          transform: scale(1);
-          opacity: 1;
-        }
-        to {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1>
-        Chúc Mừng Sinh Nhật Hoàng Thư,🎁✨🎁✨<br />
-        Chúc em tuổi mới luôn xinh đẹp, hạnh phúc <br />
-        và đạt được những điều mình mong muốn nhé ❤️ 💖🌹!
-      </h1>
-      <p class="date">Happy birthday Hoàng Thư - 27/02/2025</p>
-      <div class="balloons"></div>
-      <div class="fireworks"></div>
+        <h1>Chúc Mừng Sinh Nhật Hoàng Thư 🎁✨<br>Chúc em tuổi mới luôn xinh đẹp, hạnh phúc<br>và đạt được những điều mình mong muốn nhé ❤️ 💖🌹!</h1>
+        <p class="date">Happy birthday Hoàng Thư - 27/02/2025</p>
     </div>
+    <div class="balloons"></div>
+    <div class="fireworks"></div>
     <script>
-      function createBalloons() {
-        const container = document.querySelector(".balloons");
-        for (let i = 0; i < 150; i++) {
-          let balloon = document.createElement("div");
-          balloon.classList.add("balloon");
-          balloon.style.backgroundColor = `hsl(${
-            Math.random() * 360
-          }, 100%, 60%)`;
-          balloon.style.left = Math.random() * 100 + "vw";
-          balloon.style.animationDuration = Math.random() * 2 + 4 + "s";
-          container.appendChild(balloon);
+        function createBalloons() {
+            const container = document.querySelector(".balloons");
+            for (let i = 0; i < 100; i++) {
+                let balloon = document.createElement("div");
+                balloon.classList.add("balloon");
+                balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.animationDuration = Math.random() * 2 + 4 + "s";
+                container.appendChild(balloon);
+            }
         }
-      }
-      function createFireworks() {
-        const container = document.querySelector(".fireworks");
-        for (let i = 0; i < 30; i++) {
-          let firework = document.createElement("div");
-          firework.classList.add("firework");
-          firework.style.left = Math.random() * 100 + "vw";
-          firework.style.top = Math.random() * 50 + "vh";
-          firework.style.animationDuration = Math.random() * 1 + 1.5 + "s";
-          container.appendChild(firework);
+        function createFireworks() {
+            const container = document.querySelector(".fireworks");
+            for (let i = 0; i < 20; i++) {
+                let firework = document.createElement("div");
+                firework.classList.add("firework");
+                firework.style.left = Math.random() * 100 + "vw";
+                firework.style.top = Math.random() * 50 + "vh";
+                firework.style.animationDuration = Math.random() * 1 + 1.5 + "s";
+                container.appendChild(firework);
+            }
         }
-      }
-      createBalloons();
-      createFireworks();
+        createBalloons();
+        createFireworks();
     </script>
-  </body>
+</body>
 </html>
