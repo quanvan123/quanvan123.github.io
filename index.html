@@ -1,1 +1,136 @@
-kkkk
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc Mừng Sinh Nhật</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+        font-family: "Arial", sans-serif;
+        position: relative;
+        overflow: hidden;
+      }
+      .container {
+        text-align: center;
+        position: relative;
+        z-index: 10;
+      }
+      h1 {
+        font-size: 60px;
+        color: #fff;
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 5px solid white;
+        width: 0;
+        animation: typing 3s steps(20) forwards, glow 1.5s infinite alternate 3s;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 20px #ff6b81, 0 0 30px #ff4757, 0 0 40px gold;
+        }
+        to {
+          text-shadow: 0 0 30px #ff4757, 0 0 40px gold, 0 0 50px #ff6b81;
+        }
+      }
+      .balloons {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+      .balloon {
+        position: absolute;
+        width: 50px;
+        height: 70px;
+        background: red;
+        border-radius: 50%;
+        animation: rise 6s infinite ease-in-out;
+      }
+      @keyframes rise {
+        from {
+          transform: translateY(100vh);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(-10vh);
+          opacity: 0;
+        }
+      }
+      .firework {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: yellow;
+        border-radius: 50%;
+        animation: explode 1.5s ease-out infinite;
+      }
+      @keyframes explode {
+        from {
+          transform: scale(1);
+          opacity: 1;
+        }
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        Chúc Mừng Sinh Nhật Hoàng Thư,<br />
+        Chúc em tuổi mới luôn xinh đẹp, hạnh phúc và thành công !
+      </h1>
+      <div class="balloons"></div>
+      <div class="fireworks"></div>
+    </div>
+    <script>
+      function createBalloons() {
+        const container = document.querySelector(".balloons");
+        for (let i = 0; i < 150; i++) {
+          let balloon = document.createElement("div");
+          balloon.classList.add("balloon");
+          balloon.style.backgroundColor = `hsl(${
+            Math.random() * 360
+          }, 100%, 60%)`;
+          balloon.style.left = Math.random() * 100 + "vw";
+          balloon.style.animationDuration = Math.random() * 2 + 4 + "s";
+          container.appendChild(balloon);
+        }
+      }
+      function createFireworks() {
+        const container = document.querySelector(".fireworks");
+        for (let i = 0; i < 30; i++) {
+          let firework = document.createElement("div");
+          firework.classList.add("firework");
+          firework.style.left = Math.random() * 100 + "vw";
+          firework.style.top = Math.random() * 50 + "vh";
+          firework.style.animationDuration = Math.random() * 1 + 1.5 + "s";
+          container.appendChild(firework);
+        }
+      }
+      createBalloons();
+      createFireworks();
+    </script>
+  </body>
+</html>
+
